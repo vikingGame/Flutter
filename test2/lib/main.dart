@@ -3,16 +3,14 @@ import 'package:english_words/english_words.dart';
 
 void main() => runApp(MyApp());
 
-final myColor = Colors.blue;
+final myColor = Colors.pink;
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Startup Name Generator',
-      theme: ThemeData(
-        primaryColor: myColor
-        ),
+      theme: ThemeData(primaryColor: myColor),
       home: RandomWords(),
     );
   }
@@ -55,7 +53,7 @@ class RandomWordsState extends State<RandomWords> {
 
   final _suggestions = <WordPair>[];
   final Set<WordPair> _saved = Set<WordPair>();
-  final _biggerFont = const TextStyle(fontSize: 18.0);
+  final _biggerFont = const TextStyle(fontSize: 20.0);
   Widget _buildSuggestions() {
     return ListView.builder(
         padding: const EdgeInsets.all(16.0),
@@ -97,14 +95,21 @@ class RandomWordsState extends State<RandomWords> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Startup Name Generator'),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
-        ],
-      ),
-      body: _buildSuggestions(),
-    );
+        appBar: AppBar(
+          title: Text('Startup Name Generator'),
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+          ],
+        ),
+        body: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Colors.purple, Colors.blue, Colors.green, Colors.yellow, Colors.orange, Colors.red])),
+            child: _buildSuggestions(),
+        )));
   }
 }
 
